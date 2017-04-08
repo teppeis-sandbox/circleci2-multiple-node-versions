@@ -1,7 +1,7 @@
 {
   "name": "circleci2-multiple-node-versions",
   "version": "1.0.0",
-  "description": "",
+  "description": "Sample project to build with multiple Node.js versions in CircleCI 2.0",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
