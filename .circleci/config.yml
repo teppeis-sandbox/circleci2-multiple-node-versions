@@ -36,7 +36,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ checksum yarn.lock}}-{{ .Environment.CIRCLE_JOB }}
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ checksum yarn.lock }}-{{ .Environment.CIRCLE_JOB }}
             - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}
             - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-master-{{ .Environment.CIRCLE_JOB }}
       - run:
@@ -51,7 +51,7 @@ jobs:
             # yarn test
             npm test
       - save_cache:
-          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ checksum yarn.lock}}-{{ .Environment.CIRCLE_JOB }}
+          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ checksum yarn.lock }}-{{ .Environment.CIRCLE_JOB }}
           paths:
             - node_modules
       - save_cache:
