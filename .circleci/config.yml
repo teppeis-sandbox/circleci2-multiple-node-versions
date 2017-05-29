@@ -56,11 +56,11 @@ jobs:
       - run:
           command: yarn cache dir
       - checkout
-      # - restore_cache:
-      #     keys:
-      #       - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_JOB }}
-      #       - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}
-      #       - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-master-{{ .Environment.CIRCLE_JOB }}
+      - restore_cache:
+          keys:
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_JOB }}
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-master-{{ .Environment.CIRCLE_JOB }}
       - run:
           command: ls -la .
       - run:
