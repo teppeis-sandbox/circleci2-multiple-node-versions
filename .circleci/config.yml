@@ -44,8 +44,11 @@ jobs:
             yarn versions
             echo "npm: $(npm --version)"
       - run:
-          name: Check node_modules
-          command: find node_modules
+          name: Check ls cwd
+          command: ls .
+      - run:
+          name: Check ls $HOME
+          command: ls ~/
       - run:
           name: Check ~/.cache/yarn
           command: find ~/.cache/yarn
