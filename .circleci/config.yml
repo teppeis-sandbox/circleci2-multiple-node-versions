@@ -43,6 +43,12 @@ jobs:
           command: |
             yarn versions
             echo "npm: $(npm --version)"
+      - run:
+          name: Check node_modules
+          command: find node_modules
+      - run:
+          name: Check ~/.cache/yarn
+          command: find ~/.cache/yarn
       - checkout
       # - restore_cache:
       #     keys:
