@@ -50,6 +50,10 @@ jobs:
       - run:
           command: ls -la ~/
       - run:
+          command: ls -la /usr/local/share/.cache/yarn
+      - run:
+          command: find /usr/local/share/.cache/yarn
+      - run:
           command: yarn cache dir
       - checkout
       # - restore_cache:
