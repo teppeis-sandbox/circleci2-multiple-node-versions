@@ -92,7 +92,7 @@ jobs:
       - save_cache:
           key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-#{{ .BuildNum }}
           paths:
-            - ~/.cache/yarn
+            - /usr/local/share/.cache/yarn
       - store_test_results:
           # Variables are not available in `path`
           # https://discuss.circleci.com/t/can-i-use-variables-in-cache-paths/11393
