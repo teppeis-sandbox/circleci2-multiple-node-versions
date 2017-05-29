@@ -44,14 +44,6 @@ jobs:
             yarn versions
             echo "npm: $(npm --version)"
       - run:
-          command: pwd
-      - run:
-          command: ls -la .
-      - run:
-          command: ls -la ~/
-      - run:
-          command: ls -la /usr/local/share/.cache/yarn
-      - run:
           command: find /usr/local/share/.cache/yarn
       - run:
           command: yarn cache dir
@@ -62,22 +54,10 @@ jobs:
             - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}
             - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-master-{{ .Environment.CIRCLE_JOB }}
       - run:
-          command: ls -la .
-      - run:
-          command: ls -la ~/
-      - run:
-          command: ls -la /usr/local/share/.cache/yarn
-      - run:
           command: find /usr/local/share/.cache/yarn
       - run:
           name: Install dependencies
           command: yarn install
-      - run:
-          command: ls -la .
-      - run:
-          command: ls -la ~/
-      - run:
-          command: ls -la /usr/local/share/.cache/yarn
       - run:
           command: find /usr/local/share/.cache/yarn
       - run:
