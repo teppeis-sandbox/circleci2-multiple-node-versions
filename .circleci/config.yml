@@ -44,14 +44,13 @@ jobs:
             yarn versions
             echo "npm: $(npm --version)"
       - run:
-          name: Check ls cwd
-          command: ls .
+          command: pwd
       - run:
-          name: Check ls $HOME
-          command: ls ~/
+          command: ls -la .
       - run:
-          name: Check ~/.cache/yarn
-          command: find ~/.cache/yarn
+          command: ls -la ~/
+      - run:
+          command: yarn cache dir
       - checkout
       # - restore_cache:
       #     keys:
@@ -61,6 +60,10 @@ jobs:
       - run:
           name: Install dependencies
           command: yarn install
+      - run:
+          command: ls -la .
+      - run:
+          command: ls -la ~/
       - run:
           name: Test
           command: |
