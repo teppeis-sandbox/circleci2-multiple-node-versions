@@ -50,9 +50,9 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_JOB }}
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-master-{{ .Environment.CIRCLE_JOB }}
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-master-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
       - run:
           command: find /usr/local/share/.cache/yarn
       - run:
@@ -66,11 +66,11 @@ jobs:
             mkdir -p $TEST_REPORTS
             yarn test
       - save_cache:
-          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ checksum "yarn.lock" }}-{{ .Environment.CIRCLE_JOB }}
+          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
       - save_cache:
-          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-#{{ .BuildNum }}
+          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
           paths:
             - /usr/local/share/.cache/yarn
       - store_test_results:
