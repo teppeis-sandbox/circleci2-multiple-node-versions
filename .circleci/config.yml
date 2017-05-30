@@ -51,8 +51,8 @@ jobs:
       - restore_cache:
           keys:
             - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-lock-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-master-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}
+            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-master-{{ .Environment.CIRCLE_JOB }}
       - run:
           command: find /usr/local/share/.cache/yarn
       - run:
