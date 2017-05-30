@@ -67,7 +67,7 @@ jobs:
           paths:
             - /usr/local/share/.cache/yarn
       - run:
-          # Variables are not available in `path` or `paths`
+          # Variables are not available in `path` or `paths`!
           # https://discuss.circleci.com/t/can-i-use-variables-in-cache-paths/11393
           name: Check `yarn cache dir`
           command: |
