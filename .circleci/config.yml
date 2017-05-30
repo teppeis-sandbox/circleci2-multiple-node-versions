@@ -71,7 +71,7 @@ jobs:
           name: Check `yarn cache dir`
           command: |
             CACHE_DIR=$(yarn cache dir)
-            echo "`yarn cache dir`: ${CACHE_DIR}"
+            echo "yarn cache dir: ${CACHE_DIR}"
             if [[ "$CACHE_DIR" != /usr/local/share/.cache/yarn* ]]; then
                 exit 1
             fi
