@@ -1,14 +1,5 @@
 version: 2
 jobs:
-  build:
-    docker:
-      - image: ruby
-    workDir: /root/your-repo
-    steps:
-      - checkout
-      - run:
-          name: Run tests
-          command: rake
   node-base: &node-base
     docker:
       - image: node
