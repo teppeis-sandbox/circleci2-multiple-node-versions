@@ -29,7 +29,7 @@ jobs:
             }
             trigger_job node-v4
             trigger_job node-v6
-            trigger_job node-v7
+            trigger_job node-v8
 
   node-base: &node-base
     docker:
@@ -88,7 +88,7 @@ jobs:
     <<: *node-base
     docker:
       - image: node:6
-  node-v7:
+  node-v8:
     <<: *node-base
     docker:
-      - image: node:7
+      - image: node:8
