@@ -1,12 +1,14 @@
-workflows:
-  version: 2
-  node-multi-build:
-    jobs:
-      -  node-v4
-      -  node-v6
-      -  node-v7
 version: 2
 jobs:
+  build:
+    docker:
+      - image: ruby
+    workDir: /root/your-repo
+    steps:
+      - checkout
+      - run:
+          name: Run tests
+          command: rake
   node-base: &node-base
     docker:
       - image: node
@@ -68,3 +70,10 @@ jobs:
     <<: *node-base
     docker:
       - image: node:7
+workflows:
+  version: 2
+  node-multi-build:
+    jobs:
+      -  node-v4
+      -  node-v6
+      -  node-v7
