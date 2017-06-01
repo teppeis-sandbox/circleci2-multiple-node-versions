@@ -65,6 +65,6 @@ workflows:
   version: 2
   node-multi-build:
     jobs:
-      -  node-v4
-      -  node-v6
-      -  node-v7
+      - node-v4
+      - node-v6
+      - node-v7
