@@ -1,3 +1,11 @@
+workflows:
+  version: 2
+  node-multi-build:
+    jobs:
+      - node-v4
+      - node-v6
+      - node-v7
+
 version: 2
 jobs:
   node-base: &node-base
@@ -61,10 +69,3 @@ jobs:
     <<: *node-base
     docker:
       - image: node:7
-workflows:
-  version: 2
-  node-multi-build:
-    jobs:
-      - node-v4
-      - node-v6
-      - node-v7
