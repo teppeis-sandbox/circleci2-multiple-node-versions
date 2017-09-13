@@ -52,7 +52,7 @@ jobs:
             CACHE_DIR=$(yarn cache dir)
             echo "yarn cache dir: ${CACHE_DIR}"
             # v0.x or v1.x
-            if [[ "$CACHE_DIR" != /usr/local/share/.cache/yarn/* -a "CACHE_DIR" != /root/.cache/yarn/* ]]; then
+            if [[ "$CACHE_DIR" != /usr/local/share/.cache/yarn* && "$CACHE_DIR" != /root/.cache/yarn/* ]]; then
                 exit 1
             fi
       - store_test_results:
