@@ -43,6 +43,7 @@ jobs:
           key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-yarn-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "yarn.lock" }}
           paths:
             - /usr/local/share/.cache/yarn
+            - /root/.cache/yarn
       - run:
           # Variables are not available in `path` or `paths`
           # https://discuss.circleci.com/t/can-i-use-variables-in-cache-paths/11393
@@ -50,7 +51,8 @@ jobs:
           command: |
             CACHE_DIR=$(yarn cache dir)
             echo "yarn cache dir: ${CACHE_DIR}"
-            if [[ "$CACHE_DIR" != /usr/local/share/.cache/yarn* ]]; then
+            # v0.x or v1.x
+            if [[ "$CACHE_DIR" != /usr/local/share/.cache/yarn* && "$CACHE_DIR" != /root/.cache/yarn/* ]]; then
                 exit 1
             fi
       - store_test_results:
