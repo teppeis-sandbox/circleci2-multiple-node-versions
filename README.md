@@ -7,10 +7,10 @@ Sample project to build with multiple Node.js versions in CircleCI 2.0!
 
 ## Branches
 
-- yarn (master)
-- yarn-with-test-report
-- npm
-- npm-with-test-report
+- [yarn](https://github.com/teppeis-sandbox/circleci2-multiple-node-versions/tree/yarn) (master)
+- [yarn-with-test-report](https://github.com/teppeis-sandbox/circleci2-multiple-node-versions/tree/yarn-with-test-report)
+- [npm-with-test-report](https://github.com/teppeis-sandbox/circleci2-multiple-node-versions/tree/npm-with-test-report)
+- [npm](https://github.com/teppeis-sandbox/circleci2-multiple-node-versions/tree/npm)
 
 ## How to use
 
