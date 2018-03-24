@@ -27,6 +27,6 @@ So the lock file is ignored in npm@2, 3 and 4 (and Node v4 and v6 bundle npm@2 a
 
 MIT License: Teppei Sato &lt;teppeis@gmail.com&gt;
 
-[circleci-image]: https://circleci.com/gh/teppeis-sandbox/circleci2-multiple-node-versions.svg?style=svg
+[circleci-image]: https://circleci.com/gh/teppeis-sandbox/circleci2-multiple-node-versions.svg?style=shield
 [circleci-url]: https://circleci.com/gh/teppeis-sandbox/circleci2-multiple-node-versions
 [node-version]: https://img.shields.io/badge/Node.js%20support-v4,v6,v8-brightgreen.svg
