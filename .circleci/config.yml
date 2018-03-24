@@ -9,6 +9,7 @@ workflows:
 version: 2
 jobs:
   node-base: &node-base
+    docker:
     working_directory: ~/working_directory
     steps:
       - run:
