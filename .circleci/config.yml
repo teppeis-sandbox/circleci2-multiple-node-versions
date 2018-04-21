@@ -13,7 +13,6 @@ jobs:
       - image: node
     environment:
       TEST_REPORTS: /tmp/test-reports
-    working_directory: ~/working_directory
     steps:
       - run:
           name: Versions
