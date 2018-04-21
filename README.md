@@ -7,10 +7,10 @@ Sample project to build with multiple Node.js versions in CircleCI 2.0!
 
 ## Branches
 
-- [yarn](https://github.com/teppeis-sandbox/circleci2-multiple-node-versions/tree/yarn) (master)
-- [yarn-with-test-report](https://github.com/teppeis-sandbox/circleci2-multiple-node-versions/tree/yarn-with-test-report)
 - [npm](https://github.com/teppeis-sandbox/circleci2-multiple-node-versions/tree/npm)
 - [npm-with-test-report](https://github.com/teppeis-sandbox/circleci2-multiple-node-versions/tree/npm-with-test-report)
+- [yarn](https://github.com/teppeis-sandbox/circleci2-multiple-node-versions/tree/yarn)
+- [yarn-with-test-report](https://github.com/teppeis-sandbox/circleci2-multiple-node-versions/tree/yarn-with-test-report)
 
 Note: `npm` and `npm-with-test-report` uses `package-lock.json` introduced by npm@5.
 So the lock file is ignored in npm@2, 3 and 4 (and Node v4 and v6 bundle npm@2 and 3 respectively).
