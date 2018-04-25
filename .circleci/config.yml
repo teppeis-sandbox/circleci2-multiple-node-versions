@@ -2,9 +2,9 @@ workflows:
   version: 2
   node-multi-build:
     jobs:
-      - node-v4
       - node-v6
       - node-v8
+      - node-v10
 
 version: 2
 jobs:
@@ -37,10 +37,6 @@ jobs:
           paths:
             - ~/.npm/_cacache
 
-  node-v4:
-    <<: *node-base
-    docker:
-      - image: node:4
   node-v6:
     <<: *node-base
     docker:
@@ -49,3 +45,7 @@ jobs:
     <<: *node-base
     docker:
       - image: node:8
+  node-v10:
+    <<: *node-base
+    docker:
+      - image: teppeis/node:10
