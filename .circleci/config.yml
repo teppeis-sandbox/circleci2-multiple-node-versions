@@ -48,4 +48,4 @@ jobs:
   node-v10:
     <<: *node-base
     docker:
-      - image: teppeis/node:10
+      - image: node:10
