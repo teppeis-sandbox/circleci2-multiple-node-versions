@@ -20,7 +20,7 @@ So the lock file is ignored in npm@3 and 4 (v6 bundles npm@3 by default).
 1. Copy `.circleci/config.yml` to your project
 2. [Add your project to CircleCI](https://circleci.com/docs/2.0/first-steps/)
 3. Open your project settings in CircleCI 2.0 and add a new "Environment Variables"
-  - name: `CIRCLE_CACHE_VERSION`, value: 1
+    - name: `CIRCLE_CACHE_VERSION`, value: 1
 4. Rebuild
 
 ## License
