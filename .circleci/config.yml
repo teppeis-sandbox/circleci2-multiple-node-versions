@@ -18,15 +18,20 @@ commands:
       - run:
           name: Test
           command: npm test
+      - save-npm-lock
+      - save-npm-cache
+  save-npm-lock:
+    steps:
       - save_cache:
           key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-npm-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
+  save-npm-cache:
+    steps:
       - save_cache:
           key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-npm-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "package-lock.json" }}
           paths:
             - ~/.npm/_cacache
-
 jobs:
   node-v6:
     docker:
