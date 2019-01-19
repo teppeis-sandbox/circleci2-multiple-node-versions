@@ -67,6 +67,11 @@ jobs:
       - image: node:10
     steps:
       - test-nodejs
+  node-v11:
+    docker:
+      - image: node:11
+    steps:
+      - test-nodejs
 
 workflows:
   node-multi-build:
@@ -74,3 +79,4 @@ workflows:
       - node-v6
       - node-v8
       - node-v10
+      - node-v11
