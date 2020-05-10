@@ -63,8 +63,8 @@ workflows:
       - node/test:
           version: "14.2"
           setup:
-            - npm version
-            - npm ci
+            - run: npm version
+            - run: npm ci
       - node/test:
           version: "12.16"
       - node/test:
