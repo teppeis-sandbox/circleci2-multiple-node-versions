@@ -34,4 +34,4 @@ workflows:
           matrix:
             parameters:
               os: [linux]
-              node-version: ["12.16", "14.2"]
+              node-version: ["latest", "latest-erbium", "latest-v14.x", "current", "lts", "14.2.0", "v14.2.0"]
