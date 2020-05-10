@@ -23,7 +23,7 @@ jobs:
       - checkout
       - node/install:
           node-version: << parameters.node-version >>
-      - node/install-packages:
+      - node/install-packages
       - run: npm run test
 
 workflows:
