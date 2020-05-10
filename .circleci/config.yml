@@ -58,7 +58,7 @@ jobs:
       - checkout
       - run: npm cache verify
       - node/install-packages:
-          with-cache: false
+          with-cache: true
       - run: npm cache verify
       - run: npm install
       - run: npm cache verify
