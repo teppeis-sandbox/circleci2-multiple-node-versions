@@ -63,6 +63,6 @@ workflows:
       - node/test:
           version: 14.2.0
       - node/test:
-          version: 12
+          version: "12"
       - node/test:
-          version: 10
+          version: "10"
