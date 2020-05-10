@@ -3,128 +3,34 @@ version: 2.1
 orbs:
   node: circleci/node@2.1
 
-commands:
-  test-nodejs:
-    steps:
-      - run:
-          name: Versions
-          command: npm version
-      - checkout
-      - restore_cache:
-          keys:
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-npm-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-npm-cache-master-{{ .Environment.CIRCLE_JOB }}
-      - run:
-          name: Install dependencies
-          command: npm ci
-      - run:
-          name: Test
-          command: npm test
-      - save-npm-cache
-  save-npm-lock:
-    steps:
-      - save_cache:
-          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-npm-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "package-lock.json" }}
-          paths:
-            - node_modules
-  save-npm-cache:
-    steps:
-      - save_cache:
-          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-npm-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "package-lock.json" }}
-          paths:
-            - ~/.npm/_cacache
+executors:
+  linux:
+    docker:
+      - image: cimg/base:stable
+  macos:
+    macos:
+      xcode: 11.4
 
 jobs:
-  node-v10:
-    docker:
-      - image: node:10
-    steps:
-      - test-nodejs
-  node-v12:
-    docker:
-      - image: node:12
-    steps:
-      - test-nodejs
-  node-v14:
-    docker:
-      - image: node:14
-    steps:
-      - test-nodejs
-  npm-test:
-    executor:
-      name: node/default
-      tag: '14.2'
+  test:
+    parameters:
+      os:
+        type: executor
+      node-version:
+        type: string
+    executor: << parameters.os >>
     steps:
       - checkout
-      - run: npm cache verify
-      - run:
-          command: |
-            if [ ! -f "package.json" ]; then
-              echo
-              echo "---"
-              echo "Unable to find your package.json file. Did you forget to set the app-dir parameter?"
-              echo "---"
-              echo
-              echo "Current directory: $(pwd)"
-              echo
-              echo
-              echo "List directory: "
-              echo
-              ls
-              exit 1
-            fi
-
-            case npm in
-              npm)
-                if [[ false ]]; then
-                  npm install
-                  echo "npm install"
-                else
-                  npm ci
-                  echo "npm ci"
-                fi
-              ;;
-              yarn)
-                if [[ false ]]; then
-                  yarn install
-                else
-                  yarn install --frozen-lockfile
-                fi
-              ;;
-            esac
-      - run: npm cache verify
+      - node/install:
+          node-version: << parameters.node-version >>
       - node/install-packages:
-          with-cache: true
-          override-ci: false
-      - run: npm cache verify
-      - run: npm install
-      - run: npm cache verify
-      - run: npm ci
-      - run: npm cache verify
       - run: npm run test
-  # test-with-orb:
-  #   docker:
-  #     - image: cimg/base:stable
-  #   steps:
-  #     - checkout
-  #     - node/test
 
 workflows:
-  node-multi-build:
+  matrix-tests:
     jobs:
-      - npm-test
-      # - node/test:
-      #     version: "14.2"
-      #     setup:
-      #       - run: npm version
-      #       - run: npm cache verify
-      # - node/test:
-      #     version: "12.16"
-      #     setup:
-      #       - run: npm version
-      #       - run: npm cache verify
-      # - node/test:
-      #     version: "10.20"
-      #     setup:
-      #       - run: npm version
-      #       - run: npm cache verify
+      - test:
+          matrix:
+            parameters:
+              os: [linux, macos]
+              node-version: ["12.16.0", "14.2.0"]
