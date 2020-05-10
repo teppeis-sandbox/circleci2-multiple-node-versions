@@ -59,6 +59,7 @@ jobs:
       - run: npm cache verify
       - node/install-packages:
           with-cache: true
+          override-ci: true
       - run: npm cache verify
       - run: npm install
       - run: npm cache verify
