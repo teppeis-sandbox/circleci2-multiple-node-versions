@@ -56,7 +56,8 @@ jobs:
       tag: '14.2'
     steps:
       - checkout
-      - node/install-packages
+      - node/install-packages:
+          with-cache: false
       - run: npm install
       - run: npm ci
       - run: npm run test
