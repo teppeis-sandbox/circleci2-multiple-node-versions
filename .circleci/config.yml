@@ -53,7 +53,7 @@ jobs:
   npm-test:
     executor:
       name: node/default
-      tag: '14'
+      tag: '14.2'
     steps:
       - checkout
       - node/install-packages
