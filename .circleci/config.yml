@@ -64,8 +64,77 @@ workflows:
           version: "14.2"
           setup:
             - run: npm version
+            - run: npm cache verify
+            - run: npm ci
+      - node/test:
+          version: "14.2"
+          setup:
+            - run: npm version
+            - run: npm cache verify
+            - run: npm ci
+      - node/test:
+          version: "14.2"
+          setup:
+            - run: npm version
+            - run: npm cache verify
+            - run: npm ci
+      - node/test:
+          version: "14.2"
+          setup:
+            - run: npm version
+            - run: npm cache verify
+            - run: npm ci
+      - node/test:
+          version: "14.2"
+          setup:
+            - run: npm version
+            - run: npm cache verify
+            - run: npm ci
+      - node/test:
+          version: "14.2"
+          setup:
+            - run: npm version
+            - run: npm cache verify
+            - run: npm ci
+      - node/test:
+          version: "14.2"
+          setup:
+            - run: npm version
+            - run: npm cache verify
+            - run: npm ci
+      - node/test:
+          version: "14.2"
+          setup:
+            - run: npm version
+            - run: npm cache verify
+            - run: npm ci
+      - node/test:
+          version: "14.2"
+          setup:
+            - run: npm version
+            - run: npm cache verify
+            - run: npm ci
+      - node/test:
+          version: "14.2"
+          setup:
+            - run: npm version
+            - run: npm cache verify
+            - run: npm ci
+      - node/test:
+          version: "14.2"
+          setup:
+            - run: npm version
+            - run: npm cache verify
             - run: npm ci
       - node/test:
           version: "12.16"
+          setup:
+            - run: npm version
+            - run: npm cache verify
+            - run: npm ci
       - node/test:
           version: "10.20"
+          setup:
+            - run: npm version
+            - run: npm cache verify
+            - run: npm ci
