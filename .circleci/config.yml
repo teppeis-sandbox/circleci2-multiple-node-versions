@@ -56,10 +56,14 @@ jobs:
       tag: '14.2'
     steps:
       - checkout
+      - run: npm cache verify
       - node/install-packages:
           with-cache: false
+      - run: npm cache verify
       - run: npm install
+      - run: npm cache verify
       - run: npm ci
+      - run: npm cache verify
       - run: npm run test
   # test-with-orb:
   #   docker:
