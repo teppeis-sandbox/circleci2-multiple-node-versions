@@ -50,6 +50,14 @@ jobs:
       - image: node:14
     steps:
       - test-nodejs
+  npm-test:
+    executor:
+      name: node/default
+      tag: '14'
+    steps:
+      - checkout
+      - node/install-packages
+      - run: npm run test
   # test-with-orb:
   #   docker:
   #     - image: cimg/base:stable
@@ -60,178 +68,19 @@ jobs:
 workflows:
   node-multi-build:
     jobs:
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "14.2"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "12.16"
-          setup:
-            - run: npm version
-            - run: npm cache verify
-      - node/test:
-          version: "10.20"
-          setup:
-            - run: npm version
-            - run: npm cache verify
+      - npm-test
+      # - node/test:
+      #     version: "14.2"
+      #     setup:
+      #       - run: npm version
+      #       - run: npm cache verify
+      # - node/test:
+      #     version: "12.16"
+      #     setup:
+      #       - run: npm version
+      #       - run: npm cache verify
+      # - node/test:
+      #     version: "10.20"
+      #     setup:
+      #       - run: npm version
+      #       - run: npm cache verify
