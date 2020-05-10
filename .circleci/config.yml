@@ -50,14 +50,14 @@ jobs:
       - image: node:14
     steps:
       - test-nodejs
-  test-with-orb:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
-      - node/test
+  # test-with-orb:
+  #   docker:
+  #     - image: cimg/base:stable
+  #   steps:
+  #     - checkout
+  #     - node/test
 
 workflows:
   node-multi-build:
     jobs:
-      - test-with-orb
+      - node/test
