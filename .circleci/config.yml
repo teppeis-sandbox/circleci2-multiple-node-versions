@@ -61,8 +61,8 @@ workflows:
   node-multi-build:
     jobs:
       - node/test:
-          version: 14.2.0
+          version: "14.2"
       - node/test:
-          version: "12"
+          version: "12.16"
       - node/test:
-          version: "10"
+          version: "10.20"
