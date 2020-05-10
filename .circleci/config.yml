@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  node: circleci/node@2.1
+
 commands:
   test-nodejs:
     steps:
@@ -47,10 +50,14 @@ jobs:
       - image: node:14
     steps:
       - test-nodejs
+  test-with-orb:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - node/test
 
 workflows:
   node-multi-build:
     jobs:
-      - node-v10
-      - node-v12
-      - node-v14
+      - test-with-orb
