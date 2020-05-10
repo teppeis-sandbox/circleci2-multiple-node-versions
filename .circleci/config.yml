@@ -57,6 +57,42 @@ jobs:
     steps:
       - checkout
       - run: npm cache verify
+      - run:
+          command: |
+            if [ ! -f "package.json" ]; then
+              echo
+              echo "---"
+              echo "Unable to find your package.json file. Did you forget to set the app-dir parameter?"
+              echo "---"
+              echo
+              echo "Current directory: $(pwd)"
+              echo
+              echo
+              echo "List directory: "
+              echo
+              ls
+              exit 1
+            fi
+
+            case npm in
+              npm)
+                if [[ false ]]; then
+                  npm install
+                  echo "npm install"
+                else
+                  npm ci
+                  echo "npm ci"
+                fi
+              ;;
+              yarn)
+                if [[ false ]]; then
+                  yarn install
+                else
+                  yarn install --frozen-lockfile
+                fi
+              ;;
+            esac
+      - run: npm cache verify
       - node/install-packages:
           with-cache: true
           override-ci: false
