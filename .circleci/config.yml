@@ -2,7 +2,6 @@ version: 2.1
 
 orbs:
   node: circleci/node@2.1
-  windows: circleci/windows@2.4
 
 executors:
   linux:
@@ -34,4 +33,4 @@ workflows:
           matrix:
             parameters:
               os: [linux]
-              node-version: ["latest", "latest-erbium", "latest-v14.x", "current", "lts", "14.2.0", "v14.2.0"]
+              node-version: ["10.20.1", "12.16.3", "14.2.0"]
