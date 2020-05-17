@@ -1,23 +1,48 @@
 {
   "name": "circleci2-multiple-node-versions",
-  "version": "1.0.0",
   "description": "Sample project to build with multiple Node.js versions in CircleCI 2.0",
-  "main": "index.js",
+  "version": "1.0.0",
+  "author": "Teppei Sato <teppeis@gmail.com>",
+  "private": true,
   "scripts": {
-    "test": "mocha"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1"
+  },
+  "homepage": "https://github.com/teppeis-sandbox/circleci2-multiple-node-versions#readme",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/teppeis-sandbox/circleci2-multiple-node-versions.git"
   },
-  "keywords": [],
-  "author": "Teppei Sato <teppeis@gmail.com>",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/teppeis-sandbox/circleci2-multiple-node-versions/issues"
   },
-  "homepage": "https://github.com/teppeis-sandbox/circleci2-multiple-node-versions#readme",
-  "devDependencies": {
-    "mocha": "^5.2.0"
-  }
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "keywords": [
+    "circleci"
+  ],
+  "license": "MIT"
 }

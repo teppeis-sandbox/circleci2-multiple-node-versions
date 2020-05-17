@@ -1,56 +1,36 @@
 version: 2.1
 
-commands:
-  test-nodejs:
-    steps:
-      - run:
-          name: Versions
-          command: npm version
-      - checkout
-      - restore_cache:
-          keys:
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-npm-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}
-            - v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-npm-cache-master-{{ .Environment.CIRCLE_JOB }}
-      - run:
-          name: Install dependencies
-          command: npm ci
-      - run:
-          name: Test
-          command: npm test
-      - save-npm-cache
-  save-npm-lock:
-    steps:
-      - save_cache:
-          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-npm-lock-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "package-lock.json" }}
-          paths:
-            - node_modules
-  save-npm-cache:
-    steps:
-      - save_cache:
-          key: v{{ .Environment.CIRCLE_CACHE_VERSION }}-{{ arch }}-npm-cache-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-{{ checksum "package-lock.json" }}
-          paths:
-            - ~/.npm/_cacache
+orbs:
+  node: circleci/node@2.1
+
+executors:
+  linux:
+    docker:
+      - image: cimg/base:stable
+  macos:
+    macos:
+      xcode: 11.4
 
 jobs:
-  node-v10:
-    docker:
-      - image: node:10
+  test:
+    parameters:
+      os:
+        type: executor
+      node-version:
+        type: string
+    executor: << parameters.os >>
     steps:
-      - test-nodejs
-  node-v12:
-    docker:
-      - image: node:12
-    steps:
-      - test-nodejs
-  node-v14:
-    docker:
-      - image: node:14
-    steps:
-      - test-nodejs
+      - checkout
+      - node/install:
+          node-version: << parameters.node-version >>
+      - node/install-packages
+      - run: npm run test
 
 workflows:
-  node-multi-build:
+  matrix-tests:
     jobs:
-      - node-v10
-      - node-v12
-      - node-v14
+      - test:
+          matrix:
+            parameters:
+              os: [linux]
+              node-version: ["10.20.1", "12.16.3", "14.2.0"]
