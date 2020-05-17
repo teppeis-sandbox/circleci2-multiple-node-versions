@@ -14,7 +14,9 @@ jobs:
     steps:
       - run: npm version
       - checkout
-      - node/install-packages
+      - node/install-packages:
+          # Cache is broken: https://github.com/CircleCI-Public/node-orb/issues/35
+          with-cache: false
       - run: npm test
 
 workflows:
